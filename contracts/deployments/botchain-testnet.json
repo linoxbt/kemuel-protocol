@@ -1,0 +1,13 @@
+{
+  "network": "botchain-testnet",
+  "chainId": 968,
+  "deploymentBlock": 19460693,
+  "deployer": "0x0769F2B1B79C32Fcc6aDA470D3251659F71cD4E8",
+  "oracleSigner": "0xE13864a741486B4ADb8E0A290702Ac535B957dC3",
+  "contracts": {
+    "MockUSDT": "0xc32Be9599EFD367ab279246e4139dC141DC25e84",
+    "AttestationRegistry": "0x4F27F85C9670D78d042fc08b0fE1f8D7B9e78444",
+    "CollateralVault": "0x97782942D00259C032B7Dce4f4b6c5dD92211c97",
+    "RevenueBondVault": "0x8060B0A1324BE2e04e6292c66920cc4901cd845d"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@kemuel/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "check-network": "hardhat run scripts/checkNetwork.ts --network botchain-testnet",
+    "deploy:testnet": "hardhat run scripts/deploy.ts --network botchain-testnet",
+    "deploy:mainnet": "hardhat run scripts/deploy.ts --network botchain"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "5.0.2",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.9",
+    "hardhat-gas-reporter": "^1.0.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}

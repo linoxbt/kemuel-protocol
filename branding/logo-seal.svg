@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none" role="img" aria-label="Kemuel Protocol seal mark">
+  <title>Kemuel Protocol — The Seal</title>
+  <circle cx="120" cy="120" r="100" stroke="currentColor" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round"/>
+  <circle cx="120" cy="120" r="88" stroke="currentColor" stroke-width="2"/>
+  <path d="M 120 20 A 100 100 0 0 1 155 26.8" stroke="#BE6A2A" stroke-width="6" stroke-linecap="round"/>
+  <g stroke="currentColor" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter">
+    <line x1="93" y1="72" x2="93" y2="168"/>
+    <line x1="93" y1="120" x2="150" y2="72"/>
+    <line x1="93" y1="120" x2="150" y2="168"/>
+  </g>
+  <circle cx="150" cy="168" r="5.5" fill="#BE6A2A"/>
+</svg>

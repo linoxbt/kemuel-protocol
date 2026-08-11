@@ -1,0 +1,27 @@
+# env — never commit real secrets
+.env
+.env.local
+*.env
+!.env.example
+
+# node
+node_modules/
+npm-debug.log*
+
+# next.js
+frontend/.next/
+frontend/out/
+frontend/next-env.d.ts
+*.tsbuildinfo
+
+# hardhat
+contracts/cache/
+contracts/artifacts/
+contracts/typechain-types/
+
+# agent
+agent/dist/
+agent/logs/
+
+# misc
+.DS_Store
