@@ -7,7 +7,9 @@
     "frontend"
   ],
   "overrides": {
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "chokidar": "^4.0.3",
+    "viem": "^2.19.4"
   },
   "scripts": {
     "contracts:test": "npm run test --workspace=contracts",

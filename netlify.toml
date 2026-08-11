@@ -1,0 +1,36 @@
+# Kemuel Protocol — Netlify build config.
+#
+# The Next.js app lives in /frontend inside this npm-workspaces monorepo, so
+# the build runs from the repo root (where package-lock.json actually lives)
+# and targets the frontend workspace explicitly, rather than setting `base`
+# and re-resolving workspace hoisting from a subdirectory.
+#
+# No [[redirects]] block is needed for page-refresh routing. This app uses
+# the App Router with every route forced dynamic (see
+# frontend/src/app/layout.tsx's `export const dynamic`), and the official
+# @netlify/plugin-nextjs runtime below converts each route into a proper
+# Netlify Function/Edge Function that serves it on any direct hit — the
+# classic SPA "redirect everything to /index.html" trick is for pure
+# client-only apps and would be wrong here.
+
+[build]
+  command = "npm install && npm run build --workspace=frontend"
+  publish = "frontend/.next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Required environment variables — set these in the Netlify UI
+# (Site configuration -> Environment variables), not here:
+#   NEXT_PUBLIC_BOT_CHAIN_RPC_URL       (https://rpc.bohr.life for testnet)
+#   NEXT_PUBLIC_BOT_CHAIN_CHAIN_ID      (968 for testnet)
+#   NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID
+#   NEXT_PUBLIC_ATTESTATION_REGISTRY_ADDRESS
+#   NEXT_PUBLIC_COLLATERAL_VAULT_ADDRESS
+#   NEXT_PUBLIC_REVENUE_BOND_VAULT_ADDRESS
+#   NEXT_PUBLIC_MOCK_USDT_ADDRESS
+#   NEXT_PUBLIC_AGENT_URL               (wherever /agent ends up deployed —
+#                                         localhost won't work in production)
