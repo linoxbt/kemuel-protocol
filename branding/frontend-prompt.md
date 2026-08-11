@@ -169,7 +169,7 @@ independently; don't collapse them into one generic "loading" state.
 
 ## 6. Tech constraints (unchanged from the base spec — do not deviate)
 
-- Next.js 14, App Router, TypeScript, Tailwind (tokens above), wagmi + viem + RainbowKit.
+- Next.js 14, App Router, TypeScript, Tailwind (tokens above), wagmi + viem + Reown AppKit.
 - Configure the BOT Chain custom chain: `id: 677`, RPC from `BOT_CHAIN_RPC_URL` env var.
 - Import contract addresses from `/contracts/deployments/<network>.json` — never hardcode.
 - All live data (loans, bonds, event feeds) comes from real contract reads/`watchContractEvent`

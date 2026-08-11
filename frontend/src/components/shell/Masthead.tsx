@@ -1,12 +1,23 @@
 'use client';
 
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useEffect, useState } from 'react';
+import { useAccount } from 'wagmi';
+import { useAppKit } from '@reown/appkit/react';
 import { LogoLockup } from '@/components/brackets/LogoLockup';
 import { BracketButton } from '@/components/brackets/BracketButton';
 import { MobileNav } from '@/components/shell/MobileNav';
 import { truncateAddress } from '@/lib/format';
 
 export function Masthead() {
+  const { address, isConnected } = useAccount();
+  const { open } = useAppKit();
+
+  // Mirrors the mount-guard RainbowKit's ConnectButton.Custom did
+  // internally — avoids a server/client markup mismatch on first paint,
+  // since wallet connection state is only ever known client-side.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
     <header className="sticky top-0 z-10 border-b border-line bg-ink">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
@@ -24,30 +35,17 @@ export function Masthead() {
           >
             Revenue
           </a>
-          <ConnectButton.Custom>
-            {({ account, chain, openConnectModal, openAccountModal, mounted }) => {
-              const ready = mounted;
-              const connected = ready && account && chain;
-
-              if (!ready) {
-                return <span className="h-5 w-24 opacity-0" aria-hidden />;
-              }
-
-              if (!connected) {
-                return (
-                  <BracketButton onClick={openConnectModal} ariaLabel="Connect wallet">
-                    CONNECT WALLET
-                  </BracketButton>
-                );
-              }
-
-              return (
-                <BracketButton onClick={openAccountModal} ariaLabel="Account">
-                  {truncateAddress(account.address)}
-                </BracketButton>
-              );
-            }}
-          </ConnectButton.Custom>
+          {!mounted ? (
+            <span className="h-5 w-24 opacity-0" aria-hidden />
+          ) : isConnected && address ? (
+            <BracketButton onClick={() => open({ view: 'Account' })} ariaLabel="Account">
+              {truncateAddress(address)}
+            </BracketButton>
+          ) : (
+            <BracketButton onClick={() => open()} ariaLabel="Connect wallet">
+              CONNECT WALLET
+            </BracketButton>
+          )}
           <MobileNav />
         </nav>
       </div>
