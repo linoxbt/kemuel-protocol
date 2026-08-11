@@ -14,6 +14,17 @@ import type {
   UnderwritingResult,
 } from './types';
 
+/** Browsers throw generic, unhelpful messages ("Failed to fetch", "Load
+ * failed", "NetworkError...") when a fetch can't even reach the server —
+ * almost always because the agent service isn't running. Surface that
+ * plainly instead of the raw browser wording. */
+function describeError(error: unknown): string {
+  if (error instanceof TypeError) {
+    return 'Could not reach the agent service. Make sure it is running and NEXT_PUBLIC_AGENT_URL points to it.';
+  }
+  return error instanceof Error ? error.message : 'Something went wrong.';
+}
+
 function tierFor(ltvBps: number, liquidationThresholdBps: number): 'healthy' | 'margin_call' {
   const marginCallLine = liquidationThresholdBps * 0.9;
   return ltvBps >= marginCallLine ? 'margin_call' : 'healthy';
@@ -269,7 +280,7 @@ export function useSimulateAttestation(): SimulateState {
       setStage('confirmed');
     } catch (error) {
       setStage('failed');
-      setFailedReason(error instanceof Error ? error.message : 'Simulation failed');
+      setFailedReason(describeError(error));
     }
   }, []);
 
@@ -300,7 +311,7 @@ export function useSimulateRevenuePeriod(): SimulateState {
       setStage('confirmed');
     } catch (error) {
       setStage('failed');
-      setFailedReason(error instanceof Error ? error.message : 'Simulation failed');
+      setFailedReason(describeError(error));
     }
   }, []);
 
@@ -356,7 +367,7 @@ export function useStripeTestConnect(): StripeConnectState {
       setStatus('connected');
     } catch (err) {
       setStatus('error');
-      setError(err instanceof Error ? err.message : 'Stripe connect failed');
+      setError(describeError(err));
     }
   }, []);
 

@@ -15,9 +15,11 @@ export default function RevenuePage() {
   const events = useRevenueEvents();
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-16">
+    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-16">
       <NavLabel index="03" label="REVENUE BOND VAULT" />
-      <h1 className="mb-10 mt-3 font-display text-3xl text-paper">Revenue-share financing</h1>
+      <h1 className="mb-8 mt-3 font-display text-2xl text-paper sm:mb-10 sm:text-3xl">
+        Revenue-share financing
+      </h1>
 
       {!isDeployed ? (
         <p className="mb-10 border border-line bg-ink-raised p-4 font-mono text-xs text-warn">
@@ -36,7 +38,7 @@ export default function RevenuePage() {
         </div>
       ) : null}
 
-      <div className="mt-16 border-t border-line pt-10">
+      <div className="mt-12 border-t border-line pt-8 sm:mt-16 sm:pt-10">
         <p className="mb-4 font-mono text-xs uppercase tracking-wide text-paper-dim">
           [ Live event feed ]
         </p>

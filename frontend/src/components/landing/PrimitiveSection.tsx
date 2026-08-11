@@ -20,7 +20,7 @@ export function PrimitiveSection({
   ctaLabel,
 }: PrimitiveSectionProps) {
   return (
-    <div className="grid gap-8 border-t border-line py-14 sm:grid-cols-2 sm:gap-16">
+    <div className="grid gap-6 border-t border-line py-10 sm:grid-cols-2 sm:gap-16 sm:py-14">
       <div>
         <NavLabel index={index} label={title} />
         <p className="mt-4 max-w-md font-body text-sm text-paper-dim">{description}</p>
@@ -30,7 +30,7 @@ export function PrimitiveSection({
           </div>
         ) : null}
       </div>
-      <div className="flex items-center border border-line bg-ink-raised p-6">{specimen}</div>
+      <div className="flex items-center border border-line bg-ink-raised p-5 sm:p-6">{specimen}</div>
     </div>
   );
 }

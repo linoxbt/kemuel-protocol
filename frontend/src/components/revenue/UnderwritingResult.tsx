@@ -16,8 +16,8 @@ function Stat({ label, value, tone }: { label: string; value: string; tone?: 'cr
 
 export function UnderwritingResult({ result }: { result: UnderwritingResultType }) {
   return (
-    <div className="border border-line bg-ink-raised p-6">
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+    <div className="border border-line bg-ink-raised p-5 sm:p-6">
+      <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-6">
         <Stat label="Period revenue" value={formatUsd(result.periodRevenueUsd)} />
         <Stat label="Volatility" value={result.volatilityScore.toFixed(2)} />
         <Stat label="Risk score" value={result.riskScore.toFixed(2)} />

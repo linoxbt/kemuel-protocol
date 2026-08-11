@@ -20,9 +20,15 @@ export function Masthead() {
 
   return (
     <header className="sticky top-0 z-10 border-b border-line bg-ink">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <LogoLockup size="sm" withSubline />
-        <nav className="flex items-center gap-6">
+      <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3.5 sm:px-6 sm:py-4">
+        <LogoLockup size="sm" />
+        <nav className="flex items-center gap-4 sm:gap-6">
+          <a
+            href="/dashboard"
+            className="hidden font-mono text-xs uppercase tracking-wide text-paper-dim transition-colors hover:text-paper sm:inline"
+          >
+            Dashboard
+          </a>
           <a
             href="/collateral"
             className="hidden font-mono text-xs uppercase tracking-wide text-paper-dim transition-colors hover:text-paper sm:inline"
@@ -36,14 +42,15 @@ export function Masthead() {
             Revenue
           </a>
           {!mounted ? (
-            <span className="h-5 w-24 opacity-0" aria-hidden />
+            <span className="h-5 w-16 opacity-0 sm:w-24" aria-hidden />
           ) : isConnected && address ? (
             <BracketButton onClick={() => open({ view: 'Account' })} ariaLabel="Account">
               {truncateAddress(address)}
             </BracketButton>
           ) : (
             <BracketButton onClick={() => open()} ariaLabel="Connect wallet">
-              CONNECT WALLET
+              <span className="hidden sm:inline">CONNECT WALLET</span>
+              <span className="sm:hidden">CONNECT</span>
             </BracketButton>
           )}
           <MobileNav />

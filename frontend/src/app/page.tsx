@@ -8,7 +8,7 @@ export default function LandingPage() {
   return (
     <>
       <Hero />
-      <div id="primitives" className="mx-auto max-w-5xl px-6 pb-24">
+      <div id="primitives" className="mx-auto max-w-5xl px-4 pb-16 sm:px-6 sm:pb-24">
         <PrimitiveSection
           index="01"
           title="ATTESTATION ENGINE"

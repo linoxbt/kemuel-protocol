@@ -17,7 +17,14 @@ export function MobileNav() {
         [ ☰ ]
       </button>
       {open ? (
-        <div className="absolute right-0 top-full mt-2 flex flex-col gap-3 border border-line bg-ink-raised p-4">
+        <div className="absolute right-0 top-full mt-2 flex w-40 flex-col gap-3 border border-line bg-ink-raised p-4 shadow-lg">
+          <a
+            href="/dashboard"
+            className="font-mono text-xs uppercase tracking-wide text-paper-dim hover:text-paper"
+            onClick={() => setOpen(false)}
+          >
+            Dashboard
+          </a>
           <a
             href="/collateral"
             className="font-mono text-xs uppercase tracking-wide text-paper-dim hover:text-paper"
